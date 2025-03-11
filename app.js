@@ -27,7 +27,6 @@ const optimizedConnectDB = async (uri) => {
     const opts = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      bufferCommands: false,
       serverSelectionTimeoutMS: 10000, // Increased timeout for cold starts
     };
 
