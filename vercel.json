@@ -11,5 +11,12 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "/" }]
+  "routes": [
+    { "src": "/user/(.*)", "dest": "app.js" },
+    { "src": "/category/(.*)", "dest": "app.js" },
+    { "src": "/product/(.*)", "dest": "app.js" },
+    { "src": "/order/(.*)", "dest": "app.js" },
+    { "src": "/admin/(.*)", "dest": "app.js" },
+    { "src": "/(.*)", "dest": "app.js" }
+  ]
 }

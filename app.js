@@ -23,23 +23,55 @@ app.use("/product", productRoutes);
 app.use("/order", orderRoutes);
 
 
+
 const start = async () => {
   try {
-
     await connectDB(process.env.MONGO_URI)
-
     await buildAdminJS(app)
-
-    app.listen({ port:PORT, host: "0.0.0.0" }, (err, addr) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(`Server started on http://localhost:${PORT}/admin`);
-      }
-    });
+    
+    // Only run the server in development mode
+    if (process.env.NODE_ENV !== 'production') {
+      app.listen({ port: PORT, host: "0.0.0.0" }, (err, addr) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`Server started on http://localhost:${PORT}/admin`);
+        }
+      });
+    }
   } catch (error) {
     console.log("Error Starting Server ->", error);
   }
 };
 
 start();
+
+// Export the Express app for Vercel
+export default app;
+
+
+
+
+// const start = async () => {
+//   try {
+
+//     await connectDB(process.env.MONGO_URI)
+
+//     await buildAdminJS(app)
+
+//     app.listen({ port:PORT, host: "0.0.0.0" }, (err, addr) => {
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         console.log(`Server started on http://localhost:${PORT}/admin`);
+//       }
+//     });
+//   } catch (error) {
+//     console.log("Error Starting Server ->", error);
+//   }
+// };
+
+// start();
+
+// Modify the end of your app.js file
+
