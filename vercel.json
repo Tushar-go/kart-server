@@ -5,18 +5,9 @@
     {
       "src": "app.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "src/**/*",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
-    { "src": "/user/(.*)", "dest": "app.js" },
-    { "src": "/category/(.*)", "dest": "app.js" },
-    { "src": "/product/(.*)", "dest": "app.js" },
-    { "src": "/order/(.*)", "dest": "app.js" },
-    { "src": "/admin/(.*)", "dest": "app.js" },
     { "src": "/(.*)", "dest": "app.js" }
   ]
 }

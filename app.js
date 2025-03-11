@@ -6,7 +6,6 @@ import orderRoutes from "./routes/order.js";
 import dotenv from "dotenv";
 import connectDB from "./config/connect.js";
 import { PORT } from "./config/config.js";
-import { buildAdminJS } from "./config/setup.js";
 import cors from "cors"
 
 dotenv.config();
@@ -35,7 +34,7 @@ app.use((err, req, res, next) => {
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI)
-    // await buildAdminJS(app)
+   
     
     // Only run the server in development mode
     if (process.env.NODE_ENV !== 'production') {
