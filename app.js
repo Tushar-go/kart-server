@@ -17,17 +17,25 @@ app.use(express.json());
 app.use(cors())
 
 //Routes
+
+app.get('/test', (req, res) => {
+  res.json({ message: 'Test route working' });
+});
+
 app.use("/user", userRoutes);
 app.use("/category", categoryRoutes);
 app.use("/product", productRoutes);
 app.use("/order", orderRoutes);
 
-
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Something went wrong!", error: err.message });
+});
 
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI)
-    await buildAdminJS(app)
+    // await buildAdminJS(app)
     
     // Only run the server in development mode
     if (process.env.NODE_ENV !== 'production') {
